@@ -106,7 +106,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
 					 * =を押したらtextviewにansを出力したい
 					 */
 					String ansString = Double.toString(ans);
-					mTextView.setText(ansString);
+					
+						//ansStringを文字列処理して小数点切り落とし
+						    int index = ansString.indexOf(".");
+							    if(ansString.substring(index+1).equals("0")){
+							    	ansString = ansString.substring(0,index);}
+			//答えをテキストビューに表示
+			mTextView.setText(ansString);
+			
+			//過去の答えを配列に格納して履歴に表示
+			
+				
 					mTextViewU.setText(ansString);
 					beforeStatus = KEY_EQUAL;
 				}
@@ -217,9 +227,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		}
 		return passive;
 	}
-	
-	//ansをdisplay_uに順次表示
-	
 
 	
 	
