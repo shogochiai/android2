@@ -193,14 +193,30 @@
 	            android:textColor="#F0F8FF"
 	            android:textSize="40dip" />
 	    </LinearLayout>
+	    
 	</LinearLayout>
+	    <LinearLayout
+	        android:id="@+id/IntentTest"
+	        android:layout_width="wrap_content"
+	        android:layout_height="fill_parent" >
 	
+	        <Button
+	            android:id="@+id/IntentTestButton"
+	            android:layout_width="80dip"
+	            android:layout_height="40dip"
+	            android:background="#000000"
+	            android:text="Go Intent!"
+	            android:textColor="#F0F8FF"
+	            android:textSize="15dip" />
+	        
+	    </LinearLayout>
+	    
 	<TextView
-    android:id="@+id/display_u"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    android:background="#000000"
-    android:textColor="#F0F8FF"
-    android:textSize="1dip" />
+	    android:id="@+id/display_u"
+	    android:layout_width="fill_parent"
+	    android:layout_height="148dp"
+	    android:background="#000000"
+	    android:textColor="#F0F8FF"
+	    android:textSize="12dip" />
    	
 </LinearLayout>

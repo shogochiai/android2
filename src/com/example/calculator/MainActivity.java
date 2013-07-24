@@ -1,14 +1,14 @@
 package com.example.calculator;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -111,6 +111,32 @@ public class MainActivity extends Activity implements View.OnClickListener {
 						    int index = ansString.indexOf(".");
 							    if(ansString.substring(index+1).equals("0")){
 							    	ansString = ansString.substring(0,index);}
+							    	
+
+							    	//intentにansを渡す機能をあとでつけるけどまずはIntentをシンプルに実装
+							    	
+							    	
+							    	OnClickListener Lsnr = new OnClickListener(){//interfaceやから実装付き
+								    
+							    	//mId[12].setOnClickListener(new OnClickListerner(){//コンストラクタを引数に
+																    		public void onClick(View v){
+																    			Intent i = new Intent(getApplicationContext(), SubActivity.class);
+																    			//第一引数がthisでは動かない←要復習
+																		    	//http://stackoverflow.com/questions/14658469/android-intent-context-confusing
+																    			i.putExtra("Value1", "その１");
+																    			i.putExtra("Value2", "その２");
+																    			startActivityForResult(i ,0); //こんなんで実行できるのか？
+																    		}
+							    								}; //interfaceの実装を済ませて一気にコンストラクタ化するから;必要
+							    
+							    								//上で作ったLsnrをセット
+							    	final Button bt1 = (Button) findViewById(R.id.IntentTestButton);
+							    	bt1.setOnClickListener(Lsnr);
+							    								    	
+							    	
+							    	
+							    
+							    
 			//答えをテキストビューに表示
 			mTextView.setText(ansString);
 			
@@ -227,10 +253,5 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		}
 		return passive;
 	}
-
-	
-	
-	
-	
 
 }
