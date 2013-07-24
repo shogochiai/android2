@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.view.View.OnClickListener;
-import com.example.calculator.SubActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -64,6 +64,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		ReturnAndToast();
 
 		// 表示用TextView
 		mTextView = (TextView) findViewById(R.id.display);
@@ -91,28 +92,37 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		for (int i = 0; i < mId.length; i++) {
 			if (view.equals(mButton[i])) {
 				String nowValue = mTextView.getText().toString();
-				// CLEAR
-				if (i == KEY_CLEAR) {
-					mTextView.setText("");
-					calcArray.clear();
-					signArray.clear();
-					beforeStatus = KEY_CLEAR;
-				}
-				// =
-				else if (i == KEY_EQUAL && nowValue.length() > 0) {
-					nowValue = checkDisplay(nowValue);
-					calcArray.add(nowValue);
-					double ans = calc();
-					/**
-					 * =を押したらtextviewにansを出力したい
-					 */
-					String ansString = Double.toString(ans);
-					
-						//ansStringを文字列処理して小数点切り落とし
-						    int index = ansString.indexOf(".");
-							    if(ansString.substring(index+1).equals("0")){
-							    	ansString = ansString.substring(0,index);}
-							    	
+
+			// CLEAR
+			if (i == KEY_CLEAR) {
+				mTextView.setText("");
+				calcArray.clear();
+				signArray.clear();
+				beforeStatus = KEY_CLEAR;
+			}
+			// =
+			else if (i == KEY_EQUAL && nowValue.length() > 0) {
+				nowValue = checkDisplay(nowValue);
+				calcArray.add(nowValue);
+				double ans = calc();
+
+			/**
+			 * =を押したらtextviewにansを出力したい
+			 */
+			String ansString = Double.toString(ans);
+			
+			//ansStringを文字列処理して小数点切り落とし
+		    int index = ansString.indexOf(".");
+			    if(ansString.substring(index+1).equals("0")){
+			    	ansString = ansString.substring(0,index);}
+			
+			//答えをテキストビューに表示
+			mTextView.setText(ansString);
+			
+			//過去の答えを配列に格納して履歴に表示
+			mTextViewU.setText(ansString);
+			beforeStatus = KEY_EQUAL;
+
 
 							    
 							    
@@ -122,34 +132,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
  * しかしtest1プロジェクトで最小実装のIntentを作って移植したのに言うこと聞いてくれない（；ω；）				    	
  */	
 		
-		OnClickListener Lsnr = new OnClickListener(){//interfaceやから実装付き
-			public void onClick(View v){
-				intentMethod();
-			}
-			private void intentMethod(){
-	    		Intent i = new Intent();
-				i.setClassName("com.example.calculator","com.example.calculator.SubActivity");
-				//i.putExtra("com.example.calculator.testString", "!TEST STRING!");
-				startActivity(i);
-			}		   
-		}; //interfaceの実装を済ませて一気にコンストラクタ化するからコンストラクタ終了に;必要
+	OnClickListener Lsnr = new OnClickListener(){//interfaceやから実装付き
+	public void onClick(View v){
+		intentMethod();
+	}
+	private void intentMethod(){
+		Intent i = new Intent();
+		i.setClassName("com.example.calculator","com.example.calculator.SubActivity");
+		i.putExtra("ansString", "ansString");
+		startActivity(i);
+	}		   
+	}; //interfaceの実装を済ませて一気にコンストラクタ化するからコンストラクタ終了に;必要
 									    
 		//上で作ったLsnrをセット
 		final Button bt1 = (Button) findViewById(R.id.IntentTestButton);
 		bt1.setOnClickListener(Lsnr);
-		 	
-							    	
-							    
-							    
-			//答えをテキストビューに表示
-			mTextView.setText(ansString);
-			
-			//過去の答えを配列に格納して履歴に表示
-			
-				
-					mTextViewU.setText(ansString);
-					beforeStatus = KEY_EQUAL;
-				}
+		
+	}
 				
 				
 				/**
@@ -198,12 +197,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
 				 */
 				else if (i < 10) {
 					nowValue = checkDisplay(nowValue);
-					// 0しか入力されていない場合は0が２個以上並ばないようにする
-					if (nowValue.equals("0") && i == 0) {
-						return;
-					} else if (nowValue.equals("0") && i != 0) {
-						nowValue = "";
-					}
+						// 0しか入力されていない場合は0が２個以上並ばないようにする
+						if (nowValue.equals("0") && i == 0) {
+							return;
+						} else if (nowValue.equals("0") && i != 0) {
+							nowValue = "";
+						}
 
 					nowValue = nowValue + i;
 					mTextView.setText(nowValue);
@@ -212,10 +211,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
 				break;
 			}
 		}
+	}//押されたキーの判定終了
+	
+	 //SubActivityからのputExtraを受け取る
+	 private void ReturnAndToast(){
+		 Intent i = getIntent();
+			 if(i != null){
+				 String str = i.getStringExtra("Return");
+				 Toast.makeText(this, str, Toast.LENGTH_LONG).show();
+			 }
 	}
 
+	
+	
 	// 演算が行われていた場合を確認する
-	// beforeStatusに準じてでディスプレイの値を初期化する
+	// beforeStatusに準じてディスプレイの値を初期化する
 	private String checkDisplay(String now) {
 		if (beforeStatus == KEY_PLUS || 
 			beforeStatus == KEY_MINUS|| 
@@ -256,6 +266,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			j++;
 		}
 		return passive;
-	}
-
+	}	
+	
 }
