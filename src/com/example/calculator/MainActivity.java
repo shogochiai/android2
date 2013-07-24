@@ -9,6 +9,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import com.example.calculator.SubActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -80,7 +81,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			mButton[i].setOnClickListener(this);
 		}
 		calcArray = new ArrayList<String>();
-		signArray = new ArrayList<String>();
+		signArray = new ArrayList<String>(); //Genericsで型変換の手間を未然に防いでみるテスト
 	}
 
 	@Override
@@ -113,25 +114,30 @@ public class MainActivity extends Activity implements View.OnClickListener {
 							    	ansString = ansString.substring(0,index);}
 							    	
 
-							    	//intentにansを渡す機能をあとでつけるけどまずはIntentをシンプルに実装
-							    	
-							    	
-							    	OnClickListener Lsnr = new OnClickListener(){//interfaceやから実装付き
-								    
-							    	//mId[12].setOnClickListener(new OnClickListerner(){//コンストラクタを引数に
-							    		public void onClick(View v){
-								    			Intent i = new Intent();
-							    				i.setClassName("com.example.calculator","com.example.calculator.SubActivity");
-							    				i.putExtra("com.example.calculator.testString", "!TEST STRING!");
-							    				startActivity(i);
-							    				}
-							    		}; //interfaceの実装を済ませて一気にコンストラクタ化するから;必要
 							    
-							    								//上で作ったLsnrをセット
-							    	final Button bt1 = (Button) findViewById(R.id.IntentTestButton);
-							    	bt1.setOnClickListener(Lsnr);
-							    								    	
-							    	
+							    
+							    
+/**
+ * intentにansを渡す機能は後回しでまずはIntentをシンプルに実装
+ * しかしtest1プロジェクトで最小実装のIntentを作って移植したのに言うこと聞いてくれない（；ω；）				    	
+ */	
+		
+		OnClickListener Lsnr = new OnClickListener(){//interfaceやから実装付き
+			public void onClick(View v){
+				intentMethod();
+			}
+			private void intentMethod(){
+	    		Intent i = new Intent();
+				i.setClassName("com.example.calculator","com.example.calculator.SubActivity");
+				//i.putExtra("com.example.calculator.testString", "!TEST STRING!");
+				startActivity(i);
+			}		   
+		}; //interfaceの実装を済ませて一気にコンストラクタ化するからコンストラクタ終了に;必要
+									    
+		//上で作ったLsnrをセット
+		final Button bt1 = (Button) findViewById(R.id.IntentTestButton);
+		bt1.setOnClickListener(Lsnr);
+		 	
 							    	
 							    
 							    
