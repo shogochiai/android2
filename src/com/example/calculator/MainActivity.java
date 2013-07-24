@@ -121,8 +121,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 							    	//mId[12].setOnClickListener(new OnClickListerner(){//コンストラクタを引数に
 							    		public void onClick(View v){
 								    			Intent i = new Intent();
-							    				i.setClassName("com.example.calculator.MainActivity","com.example.calculator.SubActivity");
-							    				i.putExtra("com.example.calculator.MainActivity.testString", "!TEST STRING!");
+							    				i.setClassName("com.example.calculator","com.example.calculator.SubActivity");
+							    				i.putExtra("com.example.calculator.testString", "!TEST STRING!");
 							    				startActivity(i);
 							    				}
 							    		}; //interfaceの実装を済ませて一気にコンストラクタ化するから;必要
