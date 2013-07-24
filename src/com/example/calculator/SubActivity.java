@@ -18,8 +18,8 @@ import android.widget.Button;
 	        bt2.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
 	    			Intent i = new Intent();
-    				i.setClassName("com.example.calculator.SubActivity","com.example.calculator.MainActivity");
-    				i.putExtra("com.example.calculator.SubActivity.testString", "!TEST STRING!");
+    				i.setClassName("com.example.calculator","com.example.calculator.MainActivity");
+    				i.putExtra("com.example.calculator.testString", "!TEST STRING!");
     				startActivity(i);
     				}
 	        });
