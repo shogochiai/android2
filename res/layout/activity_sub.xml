@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>  
 
-    <LinearLayout
+
+<LinearLayout
       xmlns:android="http://schemas.android.com/apk/res/android"  
       android:orientation="horizontal"
       android:layout_width="fill_parent"
 	  android:layout_height="fill_parent" 
-	  android:background="#000000">  
-    <TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+	  android:background="#000000">
+
+<TextView
     android:id="@+id/TextViewSub"
+    android:layout_width="237dp"
+    android:layout_height="wrap_content"
     android:text="インテント成功です"
-    android:textSize="24sp"
-    android:gravity="center_horizontal"/>
+    android:textSize="24sp" />
     
-    <LinearLayout
-	        android:id="@+id/IntentTestSub"
-	        android:layout_width="wrap_content"
-	        android:layout_height="fill_parent" >
-	
-	        <Button
-	            android:id="@+id/ButtonSub"
-	            android:layout_width="80dip"
-	            android:layout_height="40dip"
-	            android:background="#000000"
-	            android:text="Return!"
-	            android:textColor="#F0F8FF"
-	            android:textSize="15dip" />
-	        
-	    </LinearLayout>
-	
     
-</LinearLayout>  
+    <Button
+        android:id="@+id/ButtonSub"
+        android:layout_width="80dip"
+        android:layout_height="40dip"
+        android:background="#000000"
+        android:orientation="horizontal"
+        android:text="Return!"
+        android:textColor="#F0F8FF"
+        android:textSize="15dip" />
+
+  </LinearLayout>

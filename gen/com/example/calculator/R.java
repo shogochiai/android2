@@ -24,12 +24,11 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int ButtonSub=0x7f08001a;
+        public static final int ButtonSub=0x7f080019;
         public static final int IntentTest=0x7f080015;
         public static final int IntentTestButton=0x7f080016;
-        public static final int IntentTestSub=0x7f080019;
         public static final int TextViewSub=0x7f080018;
-        public static final int action_settings=0x7f08001b;
+        public static final int action_settings=0x7f08001a;
         public static final int button0=0x7f08000a;
         public static final int button1=0x7f080001;
         public static final int button2=0x7f080002;
