@@ -125,33 +125,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			beforeStatus = KEY_EQUAL;
 
 			final String Ans = ansString;
-			
-							    
-							    
-/**
- * intentにansを渡す機能は後回しでまずはIntentをシンプルに実装
- * しかしtest1プロジェクトで最小実装のIntentを作って移植したのに言うこと聞いてくれない（；ω；）				    	
- */	
 		
-	OnClickListener Lsnr = new OnClickListener(){//interfaceやから実装付き
-	public void onClick(View v){
-		intentMethod();
-	}
-	private void intentMethod(){
-		Intent i = new Intent();
-		i.setClassName("com.example.calculator","com.example.calculator.SubActivity");
-			
-		i.putExtra("Ans", Ans);
-		startActivity(i);
-	}		   
-	}; //interfaceの実装を済ませて一気にコンストラクタ化するからコンストラクタ終了に;必要
-									    
-		//上で作ったLsnrをセット
-		final Button bt1 = (Button) findViewById(R.id.IntentTestButton);
-		bt1.setOnClickListener(Lsnr);
-		
-	}
+			Intent intent2 = new Intent();
+			intent2.setClassName("com.example.calculator","com.example.calculator.SubActivity");
 				
+			intent2.putExtra("Ans", Ans);
+			startActivity(intent2);		   
+		
+}		
 				
 				/**
 				 * 四則演算の表示と例外用のbeforeStatus
