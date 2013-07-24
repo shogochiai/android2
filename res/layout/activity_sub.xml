@@ -14,10 +14,21 @@
     android:textSize="24sp"
     android:gravity="center_horizontal"/>
     
-<Button android:id="@+id/ButtonSub"
-   android:layout_width="wrap_content"
-   android:layout_height="wrap_content"
-   android:text="戻るボタン実装予定"
-   android:gravity="center"/>
+    <LinearLayout
+	        android:id="@+id/IntentTestSub"
+	        android:layout_width="wrap_content"
+	        android:layout_height="fill_parent" >
+	
+	        <Button
+	            android:id="@+id/ButtonSub"
+	            android:layout_width="80dip"
+	            android:layout_height="40dip"
+	            android:background="#000000"
+	            android:text="Return!"
+	            android:textColor="#F0F8FF"
+	            android:textSize="15dip" />
+	        
+	    </LinearLayout>
+	
     
 </LinearLayout>  
