@@ -17,9 +17,11 @@ import android.widget.Button;
 	        final Button bt2 = (Button) findViewById(R.id.ButtonSub);
 	        bt2.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
-	        		Intent i = new Intent(getApplicationContext(), MainActivity.class);
-	        		startActivityForResult(i, 1);	
-	        	}
+	    			Intent i = new Intent();
+    				i.setClassName("com.example.calculator.SubActivity","com.example.calculator.MainActivity");
+    				i.putExtra("com.example.calculator.SubActivity.testString", "!TEST STRING!");
+    				startActivity(i);
+    				}
 	        });
 	        
 	        
