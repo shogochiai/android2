@@ -110,7 +110,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			/**
 			 * =を押したらtextviewにansを出力したい
 			 */
-			final String ansString = Double.toString(ans);//if中のと混同しないように
+			String ansString = Double.toString(ans);//if中のと混同しないように
 			
 			//ansStringを文字列処理して小数点切り落とし
 		    int index = ansString.indexOf(".");
@@ -124,8 +124,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			mTextViewU.setText(ansString);
 			beforeStatus = KEY_EQUAL;
 
-
-							    
+			final String Ans = ansString;
+			
 							    
 							    
 /**
@@ -140,8 +140,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	private void intentMethod(){
 		Intent i = new Intent();
 		i.setClassName("com.example.calculator","com.example.calculator.SubActivity");
-			String Ans = ansString;
-		
+			
 		i.putExtra("Ans", Ans);
 		startActivity(i);
 	}		   
