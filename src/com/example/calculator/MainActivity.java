@@ -119,15 +119,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
 							    	OnClickListener Lsnr = new OnClickListener(){//interfaceやから実装付き
 								    
 							    	//mId[12].setOnClickListener(new OnClickListerner(){//コンストラクタを引数に
-																    		public void onClick(View v){
-																    			Intent i = new Intent(getApplicationContext(), SubActivity.class);
-																    			//第一引数がthisでは動かない←要復習
-																		    	//http://stackoverflow.com/questions/14658469/android-intent-context-confusing
-																    			i.putExtra("Value1", "その１");
-																    			i.putExtra("Value2", "その２");
-																    			startActivityForResult(i ,0); //こんなんで実行できるのか？
-																    		}
-							    								}; //interfaceの実装を済ませて一気にコンストラクタ化するから;必要
+							    		public void onClick(View v){
+							    			Intent i = new Intent(getApplicationContext(), SubActivity.class);
+							    			//第一引数がthisでは動かない←要復習
+									    	//http://stackoverflow.com/questions/14658469/android-intent-context-confusing
+							    			i.putExtra("Value1", "その１");
+							    			i.putExtra("Value2", "その２");
+							    			startActivityForResult(i ,0); //こんなんで実行できるのか？
+							    		}
+							}; //interfaceの実装を済ませて一気にコンストラクタ化するから;必要
 							    
 							    								//上で作ったLsnrをセット
 							    	final Button bt1 = (Button) findViewById(R.id.IntentTestButton);
