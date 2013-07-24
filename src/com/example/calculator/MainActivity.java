@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -109,12 +110,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			/**
 			 * =を押したらtextviewにansを出力したい
 			 */
-			String ansString = Double.toString(ans);
+			final String ansString = Double.toString(ans);//if中のと混同しないように
 			
 			//ansStringを文字列処理して小数点切り落とし
 		    int index = ansString.indexOf(".");
 			    if(ansString.substring(index+1).equals("0")){
-			    	ansString = ansString.substring(0,index);}
+			    	String ansStirng = ansString.substring(0,index);}
 			
 			//答えをテキストビューに表示
 			mTextView.setText(ansString);
@@ -139,7 +140,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	private void intentMethod(){
 		Intent i = new Intent();
 		i.setClassName("com.example.calculator","com.example.calculator.SubActivity");
-		i.putExtra("ansString", "ansString");
+			String Ans = ansString;
+		
+		i.putExtra("Ans", Ans);
 		startActivity(i);
 	}		   
 	}; //interfaceの実装を済ませて一気にコンストラクタ化するからコンストラクタ終了に;必要
