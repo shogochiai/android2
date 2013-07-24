@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+import com.example.calculator.MainActivity;
 
 public class SubActivity extends Activity{  
 
@@ -36,8 +37,9 @@ public class SubActivity extends Activity{
 	private void ReturnAndToast(){
 		 Intent intent = getIntent();
 			 if(intent != null){
-				 String str = intent.getStringExtra("ansString");
-				 Toast.makeText(this, str, Toast.LENGTH_LONG).show();
+				 Bundle extras=getIntent().getExtras();
+			     String Ans = extras.getString("Ans");
+				 Toast.makeText(this, Ans, Toast.LENGTH_LONG).show();
 			 }
 
 	 }
